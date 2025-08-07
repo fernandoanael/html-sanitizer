@@ -340,7 +340,9 @@ class Sanitizer:
                 # remove p-in-li and p-in-p tags
                 for p in element.findall("p"):
                     if getattr(p, "text", None):
-                        p.text = " " + p.text + " "
+                        # Only add spaces for p-in-p cases, not for p-in-li
+                        if element.tag == "p":
+                            p.text = " " + p.text + " "
                     p.drop_tag()
 
                 # remove list markers, maybe copy-pasted from word or whatever

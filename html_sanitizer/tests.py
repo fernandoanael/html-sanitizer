@@ -112,12 +112,12 @@ class SanitizerTestCase(TestCase):
 
     def test_04_p_in_li(self):
         entries = (
-            ("<li><p>foo</p></li>", "<li> foo </li>"),
+            ("<li><p>foo</p></li>", "<li>foo</li>"),
             ("<li>&nbsp;<p>foo</p> &#160; </li>", "<li> foo </li>"),
             (
                 "<li>foo<p>bar<strong>xx</strong>rab</p><strong>baz</strong>"
                 "a<p>b</p>c</li>",
-                "<li>foo bar <strong>xx</strong>rab<strong>baz</strong>a b c</li>",
+                "<li>foobar<strong>xx</strong>rab<strong>baz</strong>abc</li>",
             ),
         )
 
